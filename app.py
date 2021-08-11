@@ -20,6 +20,15 @@ def home():
 	return render_template("home.html", username="Jacob", todos=database_result)
 
 
+@app.route('/add/<item>', methods=["GET"])
+def add_item(item):
+	"""
+	Validated; just add logic.
+	"""
+	print(item)
+	return redirect(url_for("home"))
+
+
 if __name__ == '__main__':
 	app.run()
 	
