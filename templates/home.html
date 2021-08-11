@@ -2,7 +2,32 @@
 
 {% block section1 %}
 	{% if username %}
-	<h1>Welcome, {{ username }}!</h1>
-	
+		<h1">Welcome, {{ username }}!</h1>
+		<br><br>
+		{% for todo in todos %}
+			<table>
+				<th>
+					<td></td>
+					<td></td>
+					<td></td>
+				</th>
+				<tr>
+					<td>
+						<strong>Task:</strong> <em>{{ todo[0] }}</em>
+					</td>
+					<td>
+						<strong>Status:</strong> <em>{{ todo[1] }}</em>
+					</td>
+					<td>
+						<!-- Add button to mark as to do here -->
+						<!-- Maybe add a status drop down for other statuses? -->
+					</td>
+					<td>
+						<strong>Notes:</strong> <em>{{ todo[2] }}</em>
+					</td>
+				</tr>
+			</table>
+			<br><br>
+		{% endfor %}
 	{% endif %}
 {% endblock %}

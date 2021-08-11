@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-database_result = [[["Install aileron"],["Not Done"],["Need help"]], [["Fix WO for N4837A"],["Not Done"],["See GJ"]]]
+database_result = [["Install aileron","Not Done","Need help"], ["Fix WO for N4837A", "Not Done", "See JG"]]
 
 
 @app.route('/', methods=['GET'])
