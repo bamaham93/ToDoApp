@@ -1,10 +1,12 @@
 #! usr/bin/env python3
 
 """
+CLI tools to manipulate the database.
 """
 
 import database
 import sqlite3
+import click
 
 con = sqlite3.connect("todo.db")
 c = con.cursor()
