@@ -1,33 +1,149 @@
 {% extends "base.html" %}
 
 {% block section1 %}
-	{% if username %}
-		<h1">Welcome, {{ username }}!</h1>
-		<br><br>
-		{% for todo in todos %}
-			<table>
+<div class="has-bg-img">
+<div class="container">
+{% if username %}
+	<h1">Welcome, {{ username }}!</h1>
+{% endif %}
+	<div class="accordion bg-transparent" id="accordionExample">
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingOne">
+	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	        Items In Progress
+	      </button>
+	    </h2>
+	    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+	      <div class="accordion-body">
+		{% if in_progress %}
+			<table class="table">
 				<th>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td><strong>Task:</strong></td>
+					<td><strong>Status:</strong></td>
+					<td><strong>Notes:</strong></td>
 				</th>
+				{% for todo in in_progress %}
 				<tr>
 					<td>
-						<strong>Task:</strong> <em>{{ todo[0] }}</em>
+						<em>{{ todo[0] }}</em>
 					</td>
 					<td>
-						<strong>Status:</strong> <em>{{ todo[1] }}</em>
+						<em>{{ todo[1] }}</em>
 					</td>
 					<td>
-						<!-- Add button to mark as to do here -->
+						<input type="button" value="Finished">
+						
 						<!-- Maybe add a status drop down for other statuses? -->
+						<select name="Status">
+							<option value="todo">ToDo</option>
+							<option value="inprogress">In Progress</option>
+							<option value="onhold">On Hold</option>
+							<option value="finished">Finished</option>
+						</select>
 					</td>
 					<td>
-						<strong>Notes:</strong> <em>{{ todo[2] }}</em>
+						<em>{{ todo[2] }}</em>
 					</td>
 				</tr>
+				{% endfor %}
 			</table>
-			<br><br>
-		{% endfor %}
-	{% endif %}
+			{% endif %}
+	      </div>
+	    </div>
+	  </div>
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingTwo">
+	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+	        Items Not Done
+	      </button>
+	    </h2>
+	    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+	      <div class="accordion-body">
+			{% if not_done %}
+			<table class="table">
+				<th>
+					<td><strong>Task:</strong></td>
+					<td><strong>Status:</strong></td>
+					<td><strong>Notes:</strong></td>
+				</th>
+				{% for todo in not_done %}
+				<tr>
+					<td>
+						<em>{{ todo[0] }}</em>
+					</td>
+					<td>
+						<em>{{ todo[1] }}</em>
+					</td>
+					<td>
+						<input type="button" value="Finished">
+						
+						<!-- Maybe add a status drop down for other statuses? -->
+						<select name="Status">
+							<option value="todo">ToDo</option>
+							<option value="inprogress">In Progress</option>
+							<option value="onhold">On Hold</option>
+							<option value="finished">Finished</option>
+						</select>
+					</td>
+					<td>
+						<em>{{ todo[2] }}</em>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+	      </div>
+	    </div>
+	  </div>
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingThree">
+	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+	        Items Done
+	      </button>
+	    </h2>
+	    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+	      <div class="accordion-body">
+		{% if done %}
+			<table class="table">
+				<th>
+					<td><strong>Task:</strong></td>
+					<td><strong>Status:</strong></td>
+					<td><strong>Notes:</strong></td>
+				</th>
+				{% for todo in done %}
+				<tr>
+					<td>
+						<em>{{ todo[0] }}</em>
+					</td>
+					<td>
+						<em>{{ todo[1] }}</em>
+					</td>
+					<td>
+						<input type="button" value="Finished">
+						
+						<!-- Maybe add a status drop down for other statuses? -->
+						<select name="Status">
+							<option value="todo">ToDo</option>
+							<option value="inprogress">In Progress</option>
+							<option value="onhold">On Hold</option>
+							<option value="finished">Finished</option>
+						</select>
+					</td>
+					<td>
+						<em>{{ todo[2] }}</em>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+</div>
+{% endblock %}
+
+{% block section2 %}
+	<img class="bg-img" href="https://images.unsplash.com/photo-1598648457740-abbbe7a77e38?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80">
 {% endblock %}
